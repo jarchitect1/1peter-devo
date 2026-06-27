@@ -1,0 +1,343 @@
+/* =========================================================================
+   1 Peter Devotional Series — Starlight custom theme
+   Tufte-inspired sepia devotional look, ported from raw/assets/lesson.css
+   and layered over Tailwind v4 + Starlight.
+   ========================================================================= */
+
+@import "tailwindcss";
+
+/* ---- Design tokens ---------------------------------------------------- */
+@theme {
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #3d3d3d;
+  --color-ink-mute: #6b6b6b;
+  --color-rule: #d8d4cc;
+  --color-rule-soft: #ece8df;
+  --color-paper: #fbfaf7;
+  --color-paper-edge: #f3efe6;
+  --color-accent: #6b3f1d;        /* warm sepia, devotional feel */
+  --color-accent-soft: #efe6d6;
+  --color-gold: #8a6a2b;
+  --color-scripture-bg: #f5f0e6;
+  --color-scripture-edge: #c9b98a;
+  --color-link: #6b3f1d;
+  --color-link-hover: #4a2a12;
+
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+    Georgia, serif;
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---- Starlight custom-property overrides (sepia accents) ------------- */
+:root {
+  --sl-color-accent: var(--color-accent);
+  --sl-color-accent-low: var(--color-accent-soft);
+  --sl-color-accent-text: var(--color-accent);
+  --sl-color-white: #1a1a1a;          /* primary text ink */
+  --sl-color-gray-1: #3d3d3d;
+  --sl-color-gray-2: #6b6b6b;
+  --sl-color-gray-3: #b8b2a6;
+  --sl-color-gray-4: #d8d4cc;
+  --sl-color-gray-5: #ece8df;
+  --sl-color-gray-6: #f5f0e6;
+  --sl-color-gray-7: #fbfaf7;
+  --sl-color-bg: #fbfaf7;
+  --sl-color-bg-nav: #f3efe6;
+  --sl-color-bg-sidebar: #f3efe6;
+  --sl-color-bg-inline-code: #f5f0e6;
+  --sl-color-hairline-light: #ece8df;
+  --sl-color-hairline: #d8d4cc;
+
+  /* Serif body for prose readability */
+  --sl-font-body: var(--font-serif);
+  --sl-font-headings: var(--font-serif);
+
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Light-only: neutralize Starlight's dark & auto themes ------------- */
+/* The theme toggle is removed via a component override, but a user may still
+   land here with a stored 'dark' preference or a system dark preference. This
+   block makes the dark palette identical to the light palette so the site is
+   always presented in light mode. */
+:root[data-theme='dark'],
+:root[data-theme='auto'] {
+  --sl-color-white: #1a1a1a;
+  --sl-color-gray-1: #3d3d3d;
+  --sl-color-gray-2: #6b6b6b;
+  --sl-color-gray-3: #b8b2a6;
+  --sl-color-gray-4: #d8d4cc;
+  --sl-color-gray-5: #ece8df;
+  --sl-color-gray-6: #f5f0e6;
+  --sl-color-gray-7: #fbfaf7;
+  --sl-color-bg: #fbfaf7;
+  --sl-color-bg-nav: #f3efe6;
+  --sl-color-bg-sidebar: #f3efe6;
+  --sl-color-bg-inline-code: #f5f0e6;
+  --sl-color-hairline-light: #ece8df;
+  --sl-color-hairline: #d8d4cc;
+  color-scheme: light;
+}
+
+/* ---- Prose body (Starlight markdown content) ------------------------ */
+main .sl-markdown-content {
+  font-family: var(--font-serif);
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+
+.sl-markdown-content p {
+  margin: 0 0 1.1rem;
+}
+.sl-markdown-content strong { color: var(--color-ink); font-weight: 700; }
+.sl-markdown-content em { color: var(--color-ink-soft); }
+
+.sl-markdown-content h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2.25rem 0 0.6rem;
+  color: var(--color-ink);
+}
+.sl-markdown-content h2 .num,
+.sl-markdown-content h2 .starlight-num {
+  color: var(--color-accent);
+  font-variant-numeric: oldstyle-nums;
+  margin-right: 0.4rem;
+}
+.sl-markdown-content h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.6rem 0 0.4rem;
+  color: var(--color-ink-soft);
+}
+
+/* Links inherit sepia */
+.sl-markdown-content a,
+.sl-markdown-content a:visited {
+  color: var(--color-link);
+  border-bottom: 1px solid var(--color-rule);
+  transition: border-color .15s, color .15s;
+}
+.sl-markdown-content a:hover {
+  color: var(--color-link-hover);
+  border-bottom-color: var(--color-accent);
+}
+
+/* Lists */
+.sl-markdown-content ul,
+.sl-markdown-content ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
+.sl-markdown-content li { margin-bottom: 0.5rem; }
+.sl-markdown-content li::marker { color: var(--color-accent); }
+
+/* Tables */
+.sl-markdown-content table {
+  width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem;
+}
+.sl-markdown-content th,
+.sl-markdown-content td {
+  text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--color-rule-soft);
+}
+.sl-markdown-content th {
+  font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--color-accent); border-bottom: 1.5px solid var(--color-rule);
+}
+.sl-markdown-content td:first-child { font-weight: 600; color: var(--color-ink-soft); }
+
+/* ---- Lesson masthead ------------------------------------------------- */
+.masthead {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+.masthead .series {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+.masthead h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0.6rem 0 0.35rem;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+.masthead .passage {
+  font-style: italic;
+  color: var(--color-ink-mute);
+  font-size: 0.95rem;
+  margin: 0;
+}
+.masthead .lesson-no {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ink-mute);
+}
+
+/* ---- Lead paragraph & drop-cap -------------------------------------- */
+.lead {
+  font-size: 1.12rem;
+  color: var(--color-ink-soft);
+  margin-bottom: 1.6rem;
+}
+.opener::first-letter {
+  font-size: 3.2rem;
+  font-weight: 600;
+  float: left;
+  line-height: 0.85;
+  padding: 0.18rem 0.5rem 0 0;
+  color: var(--color-accent);
+}
+
+/* ---- Scripture quotation component ---------------------------------- */
+.scripture {
+  display: block;
+  background: var(--color-scripture-bg);
+  border-left: 3px solid var(--color-scripture-edge);
+  padding: 0.9rem 1.25rem 0.9rem 1.3rem;
+  margin: 1.4rem 0;
+  font-style: italic;
+  color: var(--color-ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+.scripture .ref {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-top: 0.6rem;
+  font-weight: 700;
+}
+.scripture .vnum {
+  font-style: normal;
+  font-family: var(--font-sans);
+  font-size: 0.68em;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-right: 0.1em;
+}
+
+/* ---- Key idea -------------------------------------------------------- */
+.keyidea {
+  margin: 1.8rem 0;
+  padding: 0.4rem 1.5rem;
+  border-left: 3px solid var(--color-accent);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--color-ink);
+}
+.keyidea .label {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+/* ---- Callout --------------------------------------------------------- */
+.callout {
+  background: #f8f2e7;
+  border-radius: 3px;
+  padding: 1rem 1.25rem;
+  margin: 1.6rem 0;
+  font-size: 0.96rem;
+}
+.callout .label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+/* ---- Quiz widget ----------------------------------------------------- */
+.quiz {
+  margin: 1.8rem 0;
+  padding: 1.25rem 1.4rem;
+  background: var(--color-paper-edge);
+  border-radius: 4px;
+  border: 1px solid var(--color-rule);
+}
+.quiz .qlabel {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.quiz .qprompt { font-weight: 600; margin-bottom: 0.9rem; color: var(--color-ink); }
+.quiz .options { list-style: none; padding: 0; margin: 0; }
+.quiz .options li {
+  padding: 0.55rem 0.8rem;
+  margin-bottom: 0.4rem;
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule-soft);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background .12s, border-color .12s;
+  font-size: 0.98rem;
+}
+.quiz .options li:hover { background: var(--color-accent-soft); border-color: var(--color-accent); }
+.quiz .options li.correct { background: #e6efd9; border-color: #8fa756; }
+.quiz .options li.incorrect { background: #f0ddd9; border-color: #b07a6a; }
+.quiz .feedback { margin-top: 0.7rem; font-size: 0.9rem; font-style: italic; color: var(--color-ink-soft); display: none; }
+.quiz .feedback.visible { display: block; }
+
+/* ---- Glossary (reference page) -------------------------------------- */
+.glossary dt {
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-top: 1.1rem;
+  font-size: 1.05rem;
+}
+.glossary dt .grk {
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 600;
+  margin-left: 0.4rem;
+}
+.glossary dd {
+  margin: 0.2rem 0 0.6rem;
+  color: var(--color-ink-soft);
+}
+.glossary dd .ref {
+  font-style: normal;
+  color: var(--color-ink-mute);
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+/* ---- Ref-links & utilities ------------------------------------------ */
+.small { font-size: 0.85rem; color: var(--color-ink-mute); }
+.center { text-align: center; }
+.ref-links { font-size: 0.85rem; color: var(--color-ink-mute); }
+.ref-links strong {
+  color: var(--color-accent); font-family: var(--font-sans);
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; display: block; margin-bottom: 0.3rem;
+}

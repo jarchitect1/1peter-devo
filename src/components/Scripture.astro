@@ -1,0 +1,14 @@
+---
+/* Scripture quotation block — verses in slot, passage ref in `ref` prop.
+   Usage:
+     <Scripture ref="1 Peter 2:9–10">
+       <sup class="vnum">9</sup>But you are a chosen race...
+       <sup class="vnum">10</sup>Once you were not a people...
+     </Scripture>
+*/
+const { ref } = Astro.props;
+---
+<div class="scripture">
+  <slot />
+  <span class="ref">{ref}</span>
+</div>

@@ -1,0 +1,50 @@
+---
+/* Multiple-choice quiz widget (single-answer, click-to-reveal).
+   Props:
+     correct : string  — the data-key of the correct option
+     prompt  : string  — the question
+     options : Array<{ key: string, text: string }>  — answer options
+                        (text may contain inline HTML; rendered via set:html)
+     feedback: string  — explanation shown after answering (may contain HTML)
+*/
+const { correct, prompt, options = [], feedback = '' } = Astro.props;
+---
+<div class="quiz" data-correct={correct}>
+  <div class="qlabel">Check your understanding</div>
+  <div class="qprompt" set:html={prompt}></div>
+  <ul class="options">
+    {options.map((opt) => (
+      <li data-key={opt.key} set:html={opt.text}></li>
+    ))}
+  </ul>
+  <div class="feedback" set:html={feedback}></div>
+</div>
+
+<script>
+  function initQuizzes() {
+    document.querySelectorAll<HTMLElement>(".quiz").forEach((quiz) => {
+      if (quiz.dataset.bound === "1") return;
+      quiz.dataset.bound = "1";
+      const correctKey = quiz.getAttribute("data-correct");
+      const feedback = quiz.querySelector<HTMLElement>(".feedback");
+      const options = Array.from(quiz.querySelectorAll<HTMLElement>(".options li"));
+      let answered = false;
+      options.forEach((opt) => {
+        opt.addEventListener("click", () => {
+          if (answered) return;
+          answered = true;
+          const key = opt.getAttribute("data-key");
+          options.forEach((o) => {
+            const k = o.getAttribute("data-key");
+            if (k === correctKey) o.classList.add("correct");
+            else if (k === key) o.classList.add("incorrect");
+          });
+          if (feedback) feedback.classList.add("visible");
+        });
+      });
+    });
+  }
+
+  initQuizzes();
+  document.addEventListener("astro:page-load", initQuizzes);
+</script>

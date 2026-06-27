@@ -1,0 +1,8 @@
+---
+/* Key idea / pull-quote block. Label via `label` prop (defaults to "Key idea"). */
+const { label = "Key idea" } = Astro.props;
+---
+<div class="keyidea">
+  <span class="label">{label}</span>
+  <p><slot /></p>
+</div>
