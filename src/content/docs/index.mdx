@@ -63,10 +63,14 @@ import { Card, CardGrid, Aside } from '@astrojs/starlight/components';
 | 31 | [从受苦到荣耀](0031-from-suffering-to-glory/) | 彼得前书 4:12–13; 5:10 |
 
 <CardGrid columns={2} stagger>
-	<Card title="彼得前书一目了然" href="/1-peter-at-a-glance/" icon="open-book">
-		全书一览：背景、五章脉络、关键经文，以及贯穿始终的祭司主题。
-	</Card>
-	<Card title="关键词（词汇表）" href="/glossary/" icon="bookmark">
-		开启本书信的词汇（*parepidēmos*、*hagios*、*basileion hierateuma*）。
-	</Card>
+	<a href="/1-peter-at-a-glance/">
+		<Card title="彼得前书一目了然" icon="open-book">
+			全书一览：背景、五章脉络、关键经文，以及贯穿始终的祭司主题。
+		</Card>
+	</a>
+	<a href="/glossary/">
+		<Card title="关键词（词汇表）" icon="bookmark">
+			开启本书信的词汇（*parepidēmos*、*hagios*、*basileion hierateuma*）。
+		</Card>
+	</a>
 </CardGrid>
