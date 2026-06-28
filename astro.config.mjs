@@ -136,9 +136,6 @@ export default defineConfig({
               },
           },
           customCss: ['./src/styles/global.css'],
-          components: {
-              ThemeSelect: './src/components/ThemeSelect.astro',
-          },
           // Chinese (root / default) sidebar
           sidebar: [
               {

@@ -57,30 +57,6 @@
   text-rendering: optimizeLegibility;
 }
 
-/* ---- Light-only: neutralize Starlight's dark & auto themes ------------- */
-/* The theme toggle is removed via a component override, but a user may still
-   land here with a stored 'dark' preference or a system dark preference. This
-   block makes the dark palette identical to the light palette so the site is
-   always presented in light mode. */
-:root[data-theme='dark'],
-:root[data-theme='auto'] {
-  --sl-color-white: #1a1a1a;
-  --sl-color-gray-1: #3d3d3d;
-  --sl-color-gray-2: #6b6b6b;
-  --sl-color-gray-3: #b8b2a6;
-  --sl-color-gray-4: #d8d4cc;
-  --sl-color-gray-5: #ece8df;
-  --sl-color-gray-6: #f5f0e6;
-  --sl-color-gray-7: #fbfaf7;
-  --sl-color-bg: #fbfaf7;
-  --sl-color-bg-nav: #f3efe6;
-  --sl-color-bg-sidebar: #f3efe6;
-  --sl-color-bg-inline-code: #f5f0e6;
-  --sl-color-hairline-light: #ece8df;
-  --sl-color-hairline: #d8d4cc;
-  color-scheme: light;
-}
-
 /* ---- Prose body (Starlight markdown content) ------------------------ */
 main .sl-markdown-content {
   font-family: var(--font-serif);
@@ -270,6 +246,46 @@ main .sl-markdown-content {
   color: var(--color-accent);
   font-weight: 700;
   margin-bottom: 0.4rem;
+}
+
+/* ---- Starlight <Aside> in dark mode --------------------------------- */
+/* The sepia theme forces a dark `--sl-color-white` for light-mode ink, which
+   leaves aside body text near-black on the dark-blue aside background. Restore
+   contrast by using explicit light text inside asides in dark/auto mode.
+   (We hard-code the value because the sepia :root overrides also remap
+   --sl-color-gray-* to dark values globally.) */
+:root[data-theme='dark'] .starlight-aside,
+:root[data-theme='auto'] .starlight-aside {
+  color: #e8e4dc;
+}
+:root[data-theme='dark'] .starlight-aside a,
+:root[data-theme='auto'] .starlight-aside a {
+  color: #9db4ff;
+}
+:root[data-theme='dark'] .starlight-aside em,
+:root[data-theme='auto'] .starlight-aside em {
+  color: #d8d2c6;
+}
+:root[data-theme='dark'] .starlight-aside strong,
+:root[data-theme='auto'] .starlight-aside strong {
+  color: #f5f0e6;
+}
+
+/* ---- Starlight <Card> in dark mode ---------------------------------- */
+/* Card background is dark in dark mode, but the sepia :root remaps
+   --sl-color-white (and the body inherits --color-ink) to dark values, making
+   title and body text invisible. Force explicit light text. */
+:root[data-theme='dark'] .card,
+:root[data-theme='auto'] .card {
+  color: #e8e4dc;
+}
+:root[data-theme='dark'] .card .title,
+:root[data-theme='auto'] .card .title {
+  color: #f5f0e6;
+}
+:root[data-theme='dark'] .card em,
+:root[data-theme='auto'] .card em {
+  color: #d8d2c6;
 }
 
 /* ---- Quiz widget ----------------------------------------------------- */
