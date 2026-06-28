@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: '1 Peter — A Devotional Series',
+			title: '1 Peter - A Devotional Series',
 			defaultLocale: 'root',
 			locales: {
 				root: { label: '简体中文', lang: 'zh-CN' },
@@ -27,14 +27,14 @@ export default defineConfig({
 					items: [
 						{
 							slug: '0001-a-living-hope-for-sojourners',
-							label: '第 1 课 —— 全书概览',
-							translations: { en: 'Lesson 1 — Overview' },
+							label: '第 1 课 - 全书概览',
+							translations: { en: 'Lesson 1 - Overview' },
 						},
 					],
 				},
 				{
-					label: '1 · 祭司身份 —— 蒙拣选的子民',
-					translations: { en: '1 · Priestly Identity — A Chosen People' },
+					label: '1 · 祭司身份 - 蒙拣选的子民',
+					translations: { en: '1 · Priestly Identity - A Chosen People' },
 					collapsed: true,
 					items: [
 						{ slug: '0002-priests-sojourning-in-the-world' },
@@ -43,8 +43,8 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '2 · 祭司生活 —— 圣洁的呼召',
-					translations: { en: '2 · Priestly Life — The Call to Holiness' },
+					label: '2 · 祭司生活 - 圣洁的呼召',
+					translations: { en: '2 · Priestly Life - The Call to Holiness' },
 					collapsed: true,
 					items: [
 						{ slug: '0005-prepare-your-minds' },
@@ -53,16 +53,16 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '3 · 祭司群体 —— 属灵的建造',
-					translations: { en: '3 · Priestly Community — Spiritual Building' },
+					label: '3 · 祭司群体 - 属灵的建造',
+					translations: { en: '3 · Priestly Community - Spiritual Building' },
 					collapsed: true,
 					items: [
 						{ slug: '0008-a-royal-priesthood' },
 					],
 				},
 				{
-					label: '4 · 祭司见证 —— 活出基督',
-					translations: { en: '4 · Priestly Witness — Living Out Christ' },
+					label: '4 · 祭司见证 - 活出基督',
+					translations: { en: '4 · Priestly Witness - Living Out Christ' },
 					collapsed: true,
 					items: [
 						{ slug: '0009-as-sojourners-in-the-world' },
@@ -71,8 +71,8 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '5 · 祭司家庭 —— 在关系中荣耀神',
-					translations: { en: '5 · Priestly Family — Glorifying God in Relationships' },
+					label: '5 · 祭司家庭 - 在关系中荣耀神',
+					translations: { en: '5 · Priestly Family - Glorifying God in Relationships' },
 					collapsed: true,
 					items: [
 						{ slug: '0012-christ-centered-marital-witness' },
@@ -80,8 +80,8 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '6 · 祭司使命 —— 常作准备',
-					translations: { en: '6 · Priestly Mission — Always Be Prepared' },
+					label: '6 · 祭司使命 - 常作准备',
+					translations: { en: '6 · Priestly Mission - Always Be Prepared' },
 					collapsed: true,
 					items: [
 						{ slug: '0014-suffer-for-righteousness' },
@@ -89,8 +89,8 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '7 · 祭司生活 —— 为神而活',
-					translations: { en: '7 · Priestly Life — Living for God' },
+					label: '7 · 祭司生活 - 为神而活',
+					translations: { en: '7 · Priestly Life - Living for God' },
 					collapsed: true,
 					items: [
 						{ slug: '0016-have-the-mind-of-christ' },
@@ -99,8 +99,8 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '8 · 祭司受苦 —— 在火炼之中',
-					translations: { en: '8 · Priestly Suffering — In the Fiery Trial' },
+					label: '8 · 祭司受苦 - 在火炼之中',
+					translations: { en: '8 · Priestly Suffering - In the Fiery Trial' },
 					collapsed: true,
 					items: [
 						{ slug: '0019-do-not-be-surprised' },
@@ -109,16 +109,16 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '9 · 祭司领袖 —— 牧养神的羊群',
-					translations: { en: '9 · Priestly Leaders — Shepherding God’s Flock' },
+					label: '9 · 祭司领袖 - 牧养神的羊群',
+					translations: { en: '9 · Priestly Leaders - Shepherding God’s Flock' },
 					collapsed: true,
 					items: [
 						{ slug: '0022-shepherds-of-gods-flock' },
 					],
 				},
 				{
-					label: '10 · 祭司群体 —— 彼此服侍',
-					translations: { en: '10 · Priestly Community — Serving One Another' },
+					label: '10 · 祭司群体 - 彼此服侍',
+					translations: { en: '10 · Priestly Community - Serving One Another' },
 					collapsed: true,
 					items: [
 						{ slug: '0023-clothe-with-humility' },
@@ -127,8 +127,8 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '11 · 祭司争战 —— 站立得稳',
-					translations: { en: '11 · Priestly Warfare — Stand Firm' },
+					label: '11 · 祭司争战 - 站立得稳',
+					translations: { en: '11 · Priestly Warfare - Stand Firm' },
 					collapsed: true,
 					items: [
 						{ slug: '0026-be-alert-and-resist' },
@@ -137,8 +137,8 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '12 · 祭司使命 —— 宣扬神的美德',
-					translations: { en: '12 · Priestly Mission — Proclaim God’s Excellencies' },
+					label: '12 · 祭司使命 - 宣扬神的美德',
+					translations: { en: '12 · Priestly Mission - Proclaim God’s Excellencies' },
 					collapsed: true,
 					items: [
 						{ slug: '0029-from-sojourners-to-priests' },
