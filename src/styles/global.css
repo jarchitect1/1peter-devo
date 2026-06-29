@@ -1,359 +1,325 @@
 /* =========================================================================
-   1 Peter Devotional Series — Starlight custom theme
-   Tufte-inspired sepia devotional look, ported from raw/assets/lesson.css
-   and layered over Tailwind v4 + Starlight.
+   1 Peter Devotional Series — Custom component styles
+   Styles for lesson-specific components (masthead, scripture, keyidea, quiz, etc.)
+   Starlight's own theme handles the overall site appearance.
    ========================================================================= */
-
-@import "tailwindcss";
-
-/* ---- Design tokens ---------------------------------------------------- */
-@theme {
-  --color-ink: #1a1a1a;
-  --color-ink-soft: #3d3d3d;
-  --color-ink-mute: #6b6b6b;
-  --color-rule: #d8d4cc;
-  --color-rule-soft: #ece8df;
-  --color-paper: #fbfaf7;
-  --color-paper-edge: #f3efe6;
-  --color-accent: #6b3f1d;        /* warm sepia, devotional feel */
-  --color-accent-soft: #efe6d6;
-  --color-gold: #8a6a2b;
-  --color-scripture-bg: #f5f0e6;
-  --color-scripture-edge: #c9b98a;
-  --color-link: #6b3f1d;
-  --color-link-hover: #4a2a12;
-
-  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
-    Georgia, serif;
-  --font-sans: "Helvetica Neue", Arial, sans-serif;
-}
-
-/* ---- Starlight custom-property overrides (sepia accents) ------------- */
-:root {
-  --sl-color-accent: var(--color-accent);
-  --sl-color-accent-low: var(--color-accent-soft);
-  --sl-color-accent-text: var(--color-accent);
-  --sl-color-white: #1a1a1a;          /* primary text ink */
-  --sl-color-gray-1: #3d3d3d;
-  --sl-color-gray-2: #6b6b6b;
-  --sl-color-gray-3: #b8b2a6;
-  --sl-color-gray-4: #d8d4cc;
-  --sl-color-gray-5: #ece8df;
-  --sl-color-gray-6: #f5f0e6;
-  --sl-color-gray-7: #fbfaf7;
-  --sl-color-bg: #fbfaf7;
-  --sl-color-bg-nav: #f3efe6;
-  --sl-color-bg-sidebar: #f3efe6;
-  --sl-color-bg-inline-code: #f5f0e6;
-  --sl-color-hairline-light: #ece8df;
-  --sl-color-hairline: #d8d4cc;
-
-  /* Serif body for prose readability */
-  --sl-font-body: var(--font-serif);
-  --sl-font-headings: var(--font-serif);
-
-  font-size: 18px;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-/* ---- Prose body (Starlight markdown content) ------------------------ */
-main .sl-markdown-content {
-  font-family: var(--font-serif);
-  line-height: 1.6;
-  color: var(--color-ink);
-}
-
-.sl-markdown-content p {
-  margin: 0 0 1.1rem;
-}
-.sl-markdown-content strong { color: var(--color-ink); font-weight: 700; }
-.sl-markdown-content em { color: var(--color-ink-soft); }
-
-.sl-markdown-content h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 2.25rem 0 0.6rem;
-  color: var(--color-ink);
-}
-.sl-markdown-content h2 .num,
-.sl-markdown-content h2 .starlight-num {
-  color: var(--color-accent);
-  font-variant-numeric: oldstyle-nums;
-  margin-right: 0.4rem;
-}
-.sl-markdown-content h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin: 1.6rem 0 0.4rem;
-  color: var(--color-ink-soft);
-}
-
-/* Links inherit sepia */
-.sl-markdown-content a,
-.sl-markdown-content a:visited {
-  color: var(--color-link);
-  border-bottom: 1px solid var(--color-rule);
-  transition: border-color .15s, color .15s;
-}
-.sl-markdown-content a:hover {
-  color: var(--color-link-hover);
-  border-bottom-color: var(--color-accent);
-}
-
-/* Lists */
-.sl-markdown-content ul,
-.sl-markdown-content ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
-.sl-markdown-content li { margin-bottom: 0.5rem; }
-.sl-markdown-content li::marker { color: var(--color-accent); }
-
-/* Tables */
-.sl-markdown-content table {
-  width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem;
-}
-.sl-markdown-content th,
-.sl-markdown-content td {
-  text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--color-rule-soft);
-}
-.sl-markdown-content th {
-  font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--color-accent); border-bottom: 1.5px solid var(--color-rule);
-}
-.sl-markdown-content td:first-child { font-weight: 600; color: var(--color-ink-soft); }
 
 /* ---- Lesson masthead ------------------------------------------------- */
 .masthead {
-  text-align: center;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--color-rule);
+	text-align: center;
+	margin-bottom: 2.5rem;
+	padding-bottom: 1.25rem;
+	border-bottom: 1px solid #d8d4cc;
 }
 .masthead .series {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  font-weight: 700;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 0.7rem;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: #6b3f1d;
+	font-weight: 700;
 }
 .masthead h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0.6rem 0 0.35rem;
-  line-height: 1.2;
-  color: var(--color-ink);
+	font-size: 2rem;
+	font-weight: 600;
+	margin: 0.6rem 0 0.35rem;
+	line-height: 1.2;
 }
 .masthead .passage {
-  font-style: italic;
-  color: var(--color-ink-mute);
-  font-size: 0.95rem;
-  margin: 0;
+	font-style: italic;
+	color: #6b6b6b;
+	font-size: 0.95rem;
+	margin: 0;
 }
 .masthead .lesson-no {
-  display: inline-block;
-  margin-top: 0.9rem;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-ink-mute);
+	display: inline-block;
+	margin-top: 0.9rem;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 0.68rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: #6b6b6b;
 }
 
 /* ---- Lead paragraph & drop-cap -------------------------------------- */
 .lead {
-  font-size: 1.12rem;
-  color: var(--color-ink-soft);
-  margin-bottom: 1.6rem;
+	font-size: 1.12rem;
+	color: #3d3d3d;
+	margin-bottom: 1.6rem;
 }
 .opener::first-letter {
-  font-size: 3.2rem;
-  font-weight: 600;
-  float: left;
-  line-height: 0.85;
-  padding: 0.18rem 0.5rem 0 0;
-  color: var(--color-accent);
+	font-size: 3.2rem;
+	font-weight: 600;
+	float: left;
+	line-height: 0.85;
+	padding: 0.18rem 0.5rem 0 0;
+	color: #6b3f1d;
 }
 
 /* ---- Scripture quotation component ---------------------------------- */
 .scripture {
-  display: block;
-  background: var(--color-scripture-bg);
-  border-left: 3px solid var(--color-scripture-edge);
-  padding: 0.9rem 1.25rem 0.9rem 1.3rem;
-  margin: 1.4rem 0;
-  font-style: italic;
-  color: var(--color-ink-soft);
-  font-size: 1.02rem;
-  line-height: 1.55;
+	display: block;
+	background: #f5f0e6;
+	border-left: 3px solid #c9b98a;
+	padding: 0.9rem 1.25rem 0.9rem 1.3rem;
+	margin: 1.4rem 0;
+	font-style: italic;
+	color: #3d3d3d;
+	font-size: 1.02rem;
+	line-height: 1.55;
 }
 .scripture .ref {
-  display: block;
-  font-style: normal;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-top: 0.6rem;
-  font-weight: 700;
+	display: block;
+	font-style: normal;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 0.72rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: #6b3f1d;
+	margin-top: 0.6rem;
+	font-weight: 700;
 }
 .scripture .vnum {
-  font-style: normal;
-  font-family: var(--font-sans);
-  font-size: 0.68em;
-  vertical-align: super;
-  line-height: 0;
-  color: var(--color-accent);
-  font-weight: 600;
-  margin-right: 0.1em;
+	font-style: normal;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 0.68em;
+	vertical-align: super;
+	line-height: 0;
+	color: #6b3f1d;
+	font-weight: 600;
+	margin-right: 0.1em;
 }
 
 /* ---- Key idea -------------------------------------------------------- */
 .keyidea {
-  margin: 1.8rem 0;
-  padding: 0.4rem 1.5rem;
-  border-left: 3px solid var(--color-accent);
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--color-ink);
+	margin: 1.8rem 0;
+	padding: 0.4rem 1.5rem;
+	border-left: 3px solid #6b3f1d;
+	font-size: 1.15rem;
+	font-style: italic;
 }
 .keyidea .label {
-  display: block;
-  font-style: normal;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  font-weight: 700;
-  margin-bottom: 0.3rem;
+	display: block;
+	font-style: normal;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 0.68rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: #6b3f1d;
+	font-weight: 700;
+	margin-bottom: 0.3rem;
 }
 
 /* ---- Callout --------------------------------------------------------- */
 .callout {
-  background: #f8f2e7;
-  border-radius: 3px;
-  padding: 1rem 1.25rem;
-  margin: 1.6rem 0;
-  font-size: 0.96rem;
+	background: #f8f2e7;
+	border-radius: 3px;
+	padding: 1rem 1.25rem;
+	margin: 1.6rem 0;
+	font-size: 0.96rem;
 }
 .callout .label {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-}
-
-/* ---- Starlight <Aside> in dark mode --------------------------------- */
-/* The sepia theme forces a dark `--sl-color-white` for light-mode ink, which
-   leaves aside body text near-black on the dark-blue aside background. Restore
-   contrast by using explicit light text inside asides in dark/auto mode.
-   (We hard-code the value because the sepia :root overrides also remap
-   --sl-color-gray-* to dark values globally.) */
-:root[data-theme='dark'] .starlight-aside,
-:root[data-theme='auto'] .starlight-aside {
-  color: #e8e4dc;
-}
-:root[data-theme='dark'] .starlight-aside a,
-:root[data-theme='auto'] .starlight-aside a {
-  color: #9db4ff;
-}
-:root[data-theme='dark'] .starlight-aside em,
-:root[data-theme='auto'] .starlight-aside em {
-  color: #d8d2c6;
-}
-:root[data-theme='dark'] .starlight-aside strong,
-:root[data-theme='auto'] .starlight-aside strong {
-  color: #f5f0e6;
-}
-
-/* ---- Starlight <Card> in dark mode ---------------------------------- */
-/* Card background is dark in dark mode, but the sepia :root remaps
-   --sl-color-white (and the body inherits --color-ink) to dark values, making
-   title and body text invisible. Force explicit light text. */
-:root[data-theme='dark'] .card,
-:root[data-theme='auto'] .card {
-  color: #e8e4dc;
-}
-:root[data-theme='dark'] .card .title,
-:root[data-theme='auto'] .card .title {
-  color: #f5f0e6;
-}
-:root[data-theme='dark'] .card em,
-:root[data-theme='auto'] .card em {
-  color: #d8d2c6;
+	display: block;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 0.68rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: #6b3f1d;
+	font-weight: 700;
+	margin-bottom: 0.4rem;
 }
 
 /* ---- Quiz widget ----------------------------------------------------- */
 .quiz {
-  margin: 1.8rem 0;
-  padding: 1.25rem 1.4rem;
-  background: var(--color-paper-edge);
-  border-radius: 4px;
-  border: 1px solid var(--color-rule);
+	margin: 1.8rem 0;
+	padding: 1.25rem 1.4rem;
+	background: #f3efe6;
+	border-radius: 4px;
+	border: 1px solid #d8d4cc;
 }
 .quiz .qlabel {
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 0.68rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: #6b3f1d;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
 }
-.quiz .qprompt { font-weight: 600; margin-bottom: 0.9rem; color: var(--color-ink); }
+.quiz .qprompt { font-weight: 600; margin-bottom: 0.9rem; }
 .quiz .options { list-style: none; padding: 0; margin: 0; }
 .quiz .options li {
-  padding: 0.55rem 0.8rem;
-  margin-bottom: 0.4rem;
-  background: var(--color-paper);
-  border: 1px solid var(--color-rule-soft);
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background .12s, border-color .12s;
-  font-size: 0.98rem;
+	padding: 0.55rem 0.8rem;
+	margin-bottom: 0.4rem;
+	background: #fbfaf7;
+	border: 1px solid #ece8df;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: background .12s, border-color .12s;
+	font-size: 0.98rem;
 }
-.quiz .options li:hover { background: var(--color-accent-soft); border-color: var(--color-accent); }
+.quiz .options li:hover { background: #efe6d6; border-color: #6b3f1d; }
 .quiz .options li.correct { background: #e6efd9; border-color: #8fa756; }
 .quiz .options li.incorrect { background: #f0ddd9; border-color: #b07a6a; }
-.quiz .feedback { margin-top: 0.7rem; font-size: 0.9rem; font-style: italic; color: var(--color-ink-soft); display: none; }
+.quiz .feedback { margin-top: 0.7rem; font-size: 0.9rem; font-style: italic; color: #3d3d3d; display: none; }
 .quiz .feedback.visible { display: block; }
 
 /* ---- Glossary (reference page) -------------------------------------- */
 .glossary dt {
-  font-weight: 700;
-  color: var(--color-ink);
-  margin-top: 1.1rem;
-  font-size: 1.05rem;
+	font-weight: 700;
+	margin-top: 1.1rem;
+	font-size: 1.05rem;
 }
 .glossary dt .grk {
-  color: var(--color-accent);
-  font-style: italic;
-  font-weight: 600;
-  margin-left: 0.4rem;
+	color: #6b3f1d;
+	font-style: italic;
+	font-weight: 600;
+	margin-left: 0.4rem;
 }
 .glossary dd {
-  margin: 0.2rem 0 0.6rem;
-  color: var(--color-ink-soft);
+	margin: 0.2rem 0 0.6rem;
+	color: #3d3d3d;
 }
 .glossary dd .ref {
-  font-style: normal;
-  color: var(--color-ink-mute);
-  font-size: 0.85rem;
-  display: block;
-  margin-top: 0.2rem;
+	font-style: normal;
+	color: #6b6b6b;
+	font-size: 0.85rem;
+	display: block;
+	margin-top: 0.2rem;
 }
 
 /* ---- Ref-links & utilities ------------------------------------------ */
-.small { font-size: 0.85rem; color: var(--color-ink-mute); }
+.small { font-size: 0.85rem; color: #6b6b6b; }
 .center { text-align: center; }
-.ref-links { font-size: 0.85rem; color: var(--color-ink-mute); }
+.ref-links { font-size: 0.85rem; color: #6b6b6b; }
 .ref-links strong {
-  color: var(--color-accent); font-family: var(--font-sans);
-  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
-  font-weight: 700; display: block; margin-bottom: 0.3rem;
+	color: #6b3f1d; font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+	font-weight: 700; display: block; margin-bottom: 0.3rem;
+}
+
+/* =========================================================================
+   Dark-mode overrides — Starlight's default dark theme uses a dark
+   background, so all the hardcoded "ink" colours above become invisible.
+   We switch to light text in dark/auto mode.
+   ========================================================================= */
+
+:root[data-theme='dark'] .masthead,
+:root[data-theme='auto'] .masthead {
+	border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+:root[data-theme='dark'] .masthead .series,
+:root[data-theme='auto'] .masthead .series {
+	color: #d4a574;
+}
+:root[data-theme='dark'] .masthead .passage,
+:root[data-theme='auto'] .masthead .passage,
+:root[data-theme='dark'] .masthead .lesson-no,
+:root[data-theme='auto'] .masthead .lesson-no {
+	color: #a0a0a0;
+}
+
+:root[data-theme='dark'] .lead,
+:root[data-theme='auto'] .lead {
+	color: #d8d2c6;
+}
+:root[data-theme='dark'] .opener::first-letter,
+:root[data-theme='auto'] .opener::first-letter {
+	color: #d4a574;
+}
+
+:root[data-theme='dark'] .scripture,
+:root[data-theme='auto'] .scripture {
+	background: rgba(255, 255, 255, 0.05);
+	border-left-color: #a08050;
+	color: #d8d2c6;
+}
+:root[data-theme='dark'] .scripture .ref,
+:root[data-theme='auto'] .scripture .ref {
+	color: #d4a574;
+}
+:root[data-theme='dark'] .scripture .vnum,
+:root[data-theme='auto'] .scripture .vnum {
+	color: #d4a574;
+}
+
+:root[data-theme='dark'] .keyidea,
+:root[data-theme='auto'] .keyidea {
+	border-left-color: #d4a574;
+	color: #e8e4dc;
+}
+:root[data-theme='dark'] .keyidea .label,
+:root[data-theme='auto'] .keyidea .label {
+	color: #d4a574;
+}
+
+:root[data-theme='dark'] .callout,
+:root[data-theme='auto'] .callout {
+	background: rgba(255, 255, 255, 0.06);
+}
+:root[data-theme='dark'] .callout .label,
+:root[data-theme='auto'] .callout .label {
+	color: #d4a574;
+}
+
+:root[data-theme='dark'] .quiz,
+:root[data-theme='auto'] .quiz {
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.12);
+}
+:root[data-theme='dark'] .quiz .qlabel,
+:root[data-theme='auto'] .quiz .qlabel {
+	color: #d4a574;
+}
+:root[data-theme='dark'] .quiz .options li,
+:root[data-theme='auto'] .quiz .options li {
+	background: rgba(255, 255, 255, 0.03);
+	border-color: rgba(255, 255, 255, 0.1);
+}
+:root[data-theme='dark'] .quiz .options li:hover,
+:root[data-theme='auto'] .quiz .options li:hover {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: #d4a574;
+}
+:root[data-theme='dark'] .quiz .options li.correct,
+:root[data-theme='auto'] .quiz .options li.correct {
+	background: rgba(100, 180, 80, 0.15);
+	border-color: #6a9;
+}
+:root[data-theme='dark'] .quiz .options li.incorrect,
+:root[data-theme='auto'] .quiz .options li.incorrect {
+	background: rgba(200, 100, 80, 0.15);
+	border-color: #b07a6a;
+}
+:root[data-theme='dark'] .quiz .feedback,
+:root[data-theme='auto'] .quiz .feedback {
+	color: #d8d2c6;
+}
+
+:root[data-theme='dark'] .glossary dt,
+:root[data-theme='auto'] .glossary dt {
+	color: #e8e4dc;
+}
+:root[data-theme='dark'] .glossary dt .grk,
+:root[data-theme='auto'] .glossary dt .grk {
+	color: #d4a574;
+}
+:root[data-theme='dark'] .glossary dd,
+:root[data-theme='auto'] .glossary dd {
+	color: #d8d2c6;
+}
+:root[data-theme='dark'] .glossary dd .ref,
+:root[data-theme='auto'] .glossary dd .ref {
+	color: #a0a0a0;
+}
+
+:root[data-theme='dark'] .small,
+:root[data-theme='auto'] .small,
+:root[data-theme='dark'] .ref-links,
+:root[data-theme='auto'] .ref-links {
+	color: #a0a0a0;
+}
+:root[data-theme='dark'] .ref-links strong,
+:root[data-theme='auto'] .ref-links strong {
+	color: #d4a574;
 }

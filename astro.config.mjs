@@ -2,13 +2,14 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-import tailwindcss from '@tailwindcss/vite';
-
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: '1 Peter - A Devotional Series',
+				title: {
+					'zh-CN': '彼得前书 - 灵修系列',
+					en: '1 Peter - A Devotional Series',
+				},
 			defaultLocale: 'root',
 			locales: {
 				root: { label: '简体中文', lang: 'zh-CN' },
@@ -165,8 +166,4 @@ export default defineConfig({
 			],
 		}),
 	],
-
-	vite: {
-		plugins: [tailwindcss()],
-	},
 });
