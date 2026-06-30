@@ -196,7 +196,7 @@ export default defineConfig({
 				theme_color: '#6b3f1d',
 				background_color: '#f5f0e6',
 				display: 'standalone',
-				orientation: 'portrait',
+				orientation: 'any',
 				lang: 'zh-CN',
 				start_url: '/',
 				icons: [
