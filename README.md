@@ -51,6 +51,11 @@ A **bilingual (Simplified Chinese / English) inductive Bible study site** walkin
 
 Starlight's `defaultLocale: 'root'` pattern: Chinese files live at `src/content/docs/*.mdx` (the root locale), English mirrors at `src/content/docs/en/*.mdx` with matching slugs. The sidebar is shared, with per-entry `translations: { en: '...' }`.
 
+To keep the two trees maintainable:
+
+- **Component imports are aliased** via `@components/*` (configured in `astro.config.mjs` → `vite.resolve.alias` and `tsconfig.json` → `paths`). Import blocks are byte-for-byte identical across locales — no `../../` vs `../../../` depth footgun.
+- **`pnpm check:i18n`** verifies every zh/en pair stays parallel: it flags missing twins, structural drift (mismatched heading / `<Scripture>` / `<Quiz>` / `<KeyIdea>` / `<Aside>` counts), broken prev/next link pairing, and series-endpoint invariants. Run it before committing bilingual edits.
+
 ## Commands
 
 | Command           | Action                                           |
@@ -60,6 +65,7 @@ Starlight's `defaultLocale: 'root'` pattern: Chinese files live at `src/content/
 | `pnpm build`      | Build the production site to `./dist/`           |
 | `pnpm preview`    | Preview the production build locally             |
 | `pnpm check`      | Run `astro check` (Diagnostics / type-checking)  |
+| `pnpm check:i18n` | Verify zh/en content pairs are structurally in sync |
 
 ### Dev server
 

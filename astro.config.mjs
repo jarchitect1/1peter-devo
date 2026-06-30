@@ -241,4 +241,14 @@ export default defineConfig({
 		}),
 		sitemap(),
 	],
+	vite: {
+		resolve: {
+			alias: {
+				// Lets content files import components by name regardless of how
+				// deep they sit in the locale tree (zh root vs. en/ subdir), so
+				// the import block can be byte-identical across both locales.
+				'@components': new URL('./src/components/', import.meta.url).pathname,
+			},
+		},
+	},
 });
