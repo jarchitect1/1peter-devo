@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../components/Scripture.astro';
 import Quiz from '../../components/Quiz.astro';
 import KeyIdea from '../../components/KeyIdea.astro';
+import Masthead from '../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">彼得前书 · 灵修系列</div>
-    <h1>活泼的盼望</h1>
-    <p class="passage">因怜悯重生，藉空坟墓得生</p>
-    <div class="lesson-no">第 3 课 · 彼得前书 1:3–5</div>
-  </div>
+<Masthead series={"彼得前书 · 灵修系列"} title={"活泼的盼望"} passage={"因怜悯重生，藉空坟墓得生"} lessonNo={"第 3 课 · 彼得前书 1:3–5"} />
 
   <Scripture ref="彼得前书 1:3–5 (和合本)">
 <sup class="vnum">3</sup>愿颂赞归与我们主耶稣基督的父神！他曾照自己的大怜悯，藉着耶稣基督从死里复活，重生了我们，叫我们有活泼的盼望，

@@ -1,0 +1,18 @@
+---
+/* Lesson masthead — series label, title, passage subtitle, lesson number.
+   Usage:
+     <Masthead
+       series="彼得前书 · 灵修系列"
+       title="寄居者的活泼盼望"
+       passage="一封书信的整全概貌..."
+       lessonNo="第 1 课 · 彼得前书（全书）"
+     />
+*/
+const { series, title, passage, lessonNo } = Astro.props;
+---
+<div class="masthead">
+  <div class="series">{series}</div>
+  <h1>{title}</h1>
+  <p class="passage">{passage}</p>
+  <div class="lesson-no">{lessonNo}</div>
+</div>

@@ -5,12 +5,9 @@ description: "The whole letter on one page: setting, five-chapter map, key verse
 
 import { Aside } from '@astrojs/starlight/components';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-  <div class="series">Reference Sheet</div>
-  <h1>1 Peter at a Glance</h1>
-  <p class="passage">The whole letter on one page</p>
-</div>
+<Masthead series={"Reference Sheet"} title={"1 Peter at a Glance"} passage={"The whole letter on one page"} />
 
 <p class="lead">A compact map of the letter. Keep this open when you study any passage: it shows you where you are in the whole.</p>
 

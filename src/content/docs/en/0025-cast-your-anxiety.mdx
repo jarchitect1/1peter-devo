@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>Cast Your Anxiety on Him</h1>
-    <p class="passage">Throw the whole weight, because He cares for you</p>
-    <div class="lesson-no">Lesson 25 · 1 Peter 5:7</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"Cast Your Anxiety on Him"} passage={"Throw the whole weight, because He cares for you"} lessonNo={"Lesson 25 · 1 Peter 5:7"} />
 
   <Scripture ref="1 Peter 5:7 (ESV)">
 <sup class="vnum">7</sup>casting all your anxieties on him, because he cares for you.

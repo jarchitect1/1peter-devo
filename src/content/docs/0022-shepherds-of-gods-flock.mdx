@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../components/Scripture.astro';
 import Quiz from '../../components/Quiz.astro';
 import KeyIdea from '../../components/KeyIdea.astro';
+import Masthead from '../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">彼得前书 · 灵修系列</div>
-    <h1>神羊群的牧者</h1>
-    <p class="passage">同作长老的，甘心乐意，作群羊榜样，在大牧者之下</p>
-    <div class="lesson-no">第 22 课 · 彼得前书 5:1–4</div>
-  </div>
+<Masthead series={"彼得前书 · 灵修系列"} title={"神羊群的牧者"} passage={"同作长老的，甘心乐意，作群羊榜样，在大牧者之下"} lessonNo={"第 22 课 · 彼得前书 5:1–4"} />
 
   <Scripture ref="彼得前书 5:1–4 (和合本)">
 <sup class="vnum">1</sup>我这作长老、作基督受苦的见证、同享后来所要显现之荣耀的，劝你们中间与我同作长老的人：

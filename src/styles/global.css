@@ -2,21 +2,65 @@
    1 Peter Devotional Series — Custom component styles
    Styles for lesson-specific components (masthead, scripture, keyidea, quiz, etc.)
    Starlight's own theme handles the overall site appearance.
+
+   Palette is defined once as CSS custom properties on :root and re-themed at
+   the [data-theme='dark'] / [data-theme='auto'] level, so every component
+   below re-themes automatically without per-rule overrides.
    ========================================================================= */
+
+/* ---- Palette --------------------------------------------------------- */
+:root {
+  --brand: #6b3f1d;            /* warm brown — the series accent */
+  --brand-accent: #b06a2c;     /* slightly brighter brand for dark bg */
+  --ink: #3d3d3d;              /* primary body text on light */
+  --ink-muted: #6b6b6b;        /* secondary text */
+  --surface: #f5f0e6;          /* cream scripture/quiz background */
+  --surface-2: #f8f2e7;        /* callout background */
+  --surface-3: #f3efe6;        /* quiz background */
+  --surface-4: #fbfaf7;        /* quiz option background */
+  --border: #d8d4cc;           /* hairline divider */
+  --border-warm: #c9b98a;      /* scripture left border */
+  --border-soft: #ece8df;      /* quiz option border */
+  --hover-bg: #efe6d6;         /* quiz option hover */
+  --ok-border: #8fa756;        /* correct answer border */
+  --ok-bg: #e6efd9;            /* correct answer background */
+  --err-border: #b07a6a;       /* wrong answer border */
+  --err-bg: #f0ddd9;           /* wrong answer background */
+}
+
+:root[data-theme='dark'],
+:root[data-theme='auto'] {
+  --brand: #d4a574;
+  --brand-accent: #d4a574;
+  --ink: #d8d2c6;
+  --ink-muted: #a0a0a0;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --surface-3: rgba(255, 255, 255, 0.05);
+  --surface-4: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-warm: #a08050;
+  --border-soft: rgba(255, 255, 255, 0.1);
+  --hover-bg: rgba(255, 255, 255, 0.08);
+  --ok-border: #6a9;
+  --ok-bg: rgba(100, 180, 80, 0.15);
+  --err-border: #b07a6a;
+  --err-bg: rgba(200, 100, 80, 0.15);
+}
 
 /* ---- Lesson masthead ------------------------------------------------- */
 .masthead {
 	text-align: center;
 	margin-bottom: 2.5rem;
 	padding-bottom: 1.25rem;
-	border-bottom: 1px solid #d8d4cc;
+	border-bottom: 1px solid var(--border);
 }
 .masthead .series {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-size: 0.7rem;
 	letter-spacing: 0.22em;
 	text-transform: uppercase;
-	color: #6b3f1d;
+	color: var(--brand);
 	font-weight: 700;
 }
 .masthead h1 {
@@ -27,7 +71,7 @@
 }
 .masthead .passage {
 	font-style: italic;
-	color: #6b6b6b;
+	color: var(--ink-muted);
 	font-size: 0.95rem;
 	margin: 0;
 }
@@ -38,13 +82,13 @@
 	font-size: 0.68rem;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
-	color: #6b6b6b;
+	color: var(--ink-muted);
 }
 
 /* ---- Lead paragraph & drop-cap -------------------------------------- */
 .lead {
 	font-size: 1.12rem;
-	color: #3d3d3d;
+	color: var(--ink);
 	margin-bottom: 1.6rem;
 }
 .opener::first-letter {
@@ -53,18 +97,18 @@
 	float: left;
 	line-height: 0.85;
 	padding: 0.18rem 0.5rem 0 0;
-	color: #6b3f1d;
+	color: var(--brand);
 }
 
 /* ---- Scripture quotation component ---------------------------------- */
 .scripture {
 	display: block;
-	background: #f5f0e6;
-	border-left: 3px solid #c9b98a;
+	background: var(--surface);
+	border-left: 3px solid var(--border-warm);
 	padding: 0.9rem 1.25rem 0.9rem 1.3rem;
 	margin: 1.4rem 0;
 	font-style: italic;
-	color: #3d3d3d;
+	color: var(--ink);
 	font-size: 1.02rem;
 	line-height: 1.55;
 }
@@ -75,7 +119,7 @@
 	font-size: 0.72rem;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: #6b3f1d;
+	color: var(--brand);
 	margin-top: 0.6rem;
 	font-weight: 700;
 }
@@ -85,7 +129,7 @@
 	font-size: 0.68em;
 	vertical-align: super;
 	line-height: 0;
-	color: #6b3f1d;
+	color: var(--brand);
 	font-weight: 600;
 	margin-right: 0.1em;
 }
@@ -94,7 +138,7 @@
 .keyidea {
 	margin: 1.8rem 0;
 	padding: 0.4rem 1.5rem;
-	border-left: 3px solid #6b3f1d;
+	border-left: 3px solid var(--brand);
 	font-size: 1.15rem;
 	font-style: italic;
 }
@@ -105,14 +149,14 @@
 	font-size: 0.68rem;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
-	color: #6b3f1d;
+	color: var(--brand);
 	font-weight: 700;
 	margin-bottom: 0.3rem;
 }
 
 /* ---- Callout --------------------------------------------------------- */
 .callout {
-	background: #f8f2e7;
+	background: var(--surface-2);
 	border-radius: 3px;
 	padding: 1rem 1.25rem;
 	margin: 1.6rem 0;
@@ -124,7 +168,7 @@
 	font-size: 0.68rem;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
-	color: #6b3f1d;
+	color: var(--brand);
 	font-weight: 700;
 	margin-bottom: 0.4rem;
 }
@@ -133,35 +177,46 @@
 .quiz {
 	margin: 1.8rem 0;
 	padding: 1.25rem 1.4rem;
-	background: #f3efe6;
+	background: var(--surface-3);
 	border-radius: 4px;
-	border: 1px solid #d8d4cc;
+	border: 1px solid var(--border);
 }
 .quiz .qlabel {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-size: 0.68rem;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
-	color: #6b3f1d;
+	color: var(--brand);
 	font-weight: 700;
 	margin-bottom: 0.5rem;
 }
 .quiz .qprompt { font-weight: 600; margin-bottom: 0.9rem; }
 .quiz .options { list-style: none; padding: 0; margin: 0; }
 .quiz .options li {
-	padding: 0.55rem 0.8rem;
 	margin-bottom: 0.4rem;
-	background: #fbfaf7;
-	border: 1px solid #ece8df;
-	border-radius: 3px;
+}
+.quiz .options button {
+	display: block;
+	width: 100%;
+	text-align: left;
+	font: inherit;
+	color: inherit;
 	cursor: pointer;
+	padding: 0.55rem 0.8rem;
+	background: var(--surface-4);
+	border: 1px solid var(--border-soft);
+	border-radius: 3px;
 	transition: background .12s, border-color .12s;
 	font-size: 0.98rem;
 }
-.quiz .options li:hover { background: #efe6d6; border-color: #6b3f1d; }
-.quiz .options li.correct { background: #e6efd9; border-color: #8fa756; }
-.quiz .options li.incorrect { background: #f0ddd9; border-color: #b07a6a; }
-.quiz .feedback { margin-top: 0.7rem; font-size: 0.9rem; font-style: italic; color: #3d3d3d; display: none; }
+.quiz .options button:hover { background: var(--hover-bg); border-color: var(--brand); }
+.quiz .options button:focus-visible {
+	outline: 2px solid var(--brand);
+	outline-offset: 2px;
+}
+.quiz .options button.correct { background: var(--ok-bg); border-color: var(--ok-border); }
+.quiz .options button.incorrect { background: var(--err-bg); border-color: var(--err-border); }
+.quiz .feedback { margin-top: 0.7rem; font-size: 0.9rem; font-style: italic; color: var(--ink); display: none; }
 .quiz .feedback.visible { display: block; }
 
 /* ---- Glossary (reference page) -------------------------------------- */
@@ -171,155 +226,29 @@
 	font-size: 1.05rem;
 }
 .glossary dt .grk {
-	color: #6b3f1d;
+	color: var(--brand);
 	font-style: italic;
 	font-weight: 600;
 	margin-left: 0.4rem;
 }
 .glossary dd {
 	margin: 0.2rem 0 0.6rem;
-	color: #3d3d3d;
+	color: var(--ink);
 }
 .glossary dd .ref {
 	font-style: normal;
-	color: #6b6b6b;
+	color: var(--ink-muted);
 	font-size: 0.85rem;
 	display: block;
 	margin-top: 0.2rem;
 }
 
 /* ---- Ref-links & utilities ------------------------------------------ */
-.small { font-size: 0.85rem; color: #6b6b6b; }
+.small { font-size: 0.85rem; color: var(--ink-muted); }
 .center { text-align: center; }
-.ref-links { font-size: 0.85rem; color: #6b6b6b; }
+.ref-links { font-size: 0.85rem; color: var(--ink-muted); }
 .ref-links strong {
-	color: #6b3f1d; font-family: "Helvetica Neue", Arial, sans-serif;
+	color: var(--brand); font-family: "Helvetica Neue", Arial, sans-serif;
 	font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
 	font-weight: 700; display: block; margin-bottom: 0.3rem;
-}
-
-/* =========================================================================
-   Dark-mode overrides — Starlight's default dark theme uses a dark
-   background, so all the hardcoded "ink" colours above become invisible.
-   We switch to light text in dark/auto mode.
-   ========================================================================= */
-
-:root[data-theme='dark'] .masthead,
-:root[data-theme='auto'] .masthead {
-	border-bottom-color: rgba(255, 255, 255, 0.12);
-}
-:root[data-theme='dark'] .masthead .series,
-:root[data-theme='auto'] .masthead .series {
-	color: #d4a574;
-}
-:root[data-theme='dark'] .masthead .passage,
-:root[data-theme='auto'] .masthead .passage,
-:root[data-theme='dark'] .masthead .lesson-no,
-:root[data-theme='auto'] .masthead .lesson-no {
-	color: #a0a0a0;
-}
-
-:root[data-theme='dark'] .lead,
-:root[data-theme='auto'] .lead {
-	color: #d8d2c6;
-}
-:root[data-theme='dark'] .opener::first-letter,
-:root[data-theme='auto'] .opener::first-letter {
-	color: #d4a574;
-}
-
-:root[data-theme='dark'] .scripture,
-:root[data-theme='auto'] .scripture {
-	background: rgba(255, 255, 255, 0.05);
-	border-left-color: #a08050;
-	color: #d8d2c6;
-}
-:root[data-theme='dark'] .scripture .ref,
-:root[data-theme='auto'] .scripture .ref {
-	color: #d4a574;
-}
-:root[data-theme='dark'] .scripture .vnum,
-:root[data-theme='auto'] .scripture .vnum {
-	color: #d4a574;
-}
-
-:root[data-theme='dark'] .keyidea,
-:root[data-theme='auto'] .keyidea {
-	border-left-color: #d4a574;
-	color: #e8e4dc;
-}
-:root[data-theme='dark'] .keyidea .label,
-:root[data-theme='auto'] .keyidea .label {
-	color: #d4a574;
-}
-
-:root[data-theme='dark'] .callout,
-:root[data-theme='auto'] .callout {
-	background: rgba(255, 255, 255, 0.06);
-}
-:root[data-theme='dark'] .callout .label,
-:root[data-theme='auto'] .callout .label {
-	color: #d4a574;
-}
-
-:root[data-theme='dark'] .quiz,
-:root[data-theme='auto'] .quiz {
-	background: rgba(255, 255, 255, 0.05);
-	border-color: rgba(255, 255, 255, 0.12);
-}
-:root[data-theme='dark'] .quiz .qlabel,
-:root[data-theme='auto'] .quiz .qlabel {
-	color: #d4a574;
-}
-:root[data-theme='dark'] .quiz .options li,
-:root[data-theme='auto'] .quiz .options li {
-	background: rgba(255, 255, 255, 0.03);
-	border-color: rgba(255, 255, 255, 0.1);
-}
-:root[data-theme='dark'] .quiz .options li:hover,
-:root[data-theme='auto'] .quiz .options li:hover {
-	background: rgba(255, 255, 255, 0.08);
-	border-color: #d4a574;
-}
-:root[data-theme='dark'] .quiz .options li.correct,
-:root[data-theme='auto'] .quiz .options li.correct {
-	background: rgba(100, 180, 80, 0.15);
-	border-color: #6a9;
-}
-:root[data-theme='dark'] .quiz .options li.incorrect,
-:root[data-theme='auto'] .quiz .options li.incorrect {
-	background: rgba(200, 100, 80, 0.15);
-	border-color: #b07a6a;
-}
-:root[data-theme='dark'] .quiz .feedback,
-:root[data-theme='auto'] .quiz .feedback {
-	color: #d8d2c6;
-}
-
-:root[data-theme='dark'] .glossary dt,
-:root[data-theme='auto'] .glossary dt {
-	color: #e8e4dc;
-}
-:root[data-theme='dark'] .glossary dt .grk,
-:root[data-theme='auto'] .glossary dt .grk {
-	color: #d4a574;
-}
-:root[data-theme='dark'] .glossary dd,
-:root[data-theme='auto'] .glossary dd {
-	color: #d8d2c6;
-}
-:root[data-theme='dark'] .glossary dd .ref,
-:root[data-theme='auto'] .glossary dd .ref {
-	color: #a0a0a0;
-}
-
-:root[data-theme='dark'] .small,
-:root[data-theme='auto'] .small,
-:root[data-theme='dark'] .ref-links,
-:root[data-theme='auto'] .ref-links {
-	color: #a0a0a0;
-}
-:root[data-theme='dark'] .ref-links strong,
-:root[data-theme='auto'] .ref-links strong {
-	color: #d4a574;
 }

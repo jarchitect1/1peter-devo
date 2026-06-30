@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>Following the Suffering Christ</h1>
-    <p class="passage">The unjustly treated Slave follows the unjustly treated Shepherd, step by step</p>
-    <div class="lesson-no">Lesson 11 · 1 Peter 2:18–25</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"Following the Suffering Christ"} passage={"The unjustly treated Slave follows the unjustly treated Shepherd, step by step"} lessonNo={"Lesson 11 · 1 Peter 2:18–25"} />
 
   <Scripture ref="1 Peter 2:18–25 (ESV)">
 <sup class="vnum">18</sup>Servants, be subject to your masters with all respect, not only to the good and gentle but also to the unjust.

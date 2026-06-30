@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>Submission and Witness</h1>
-    <p class="passage">The free priest, gladly ordered under authority for the Lord's sake</p>
-    <div class="lesson-no">Lesson 10 · 1 Peter 2:13–17</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"Submission and Witness"} passage={"The free priest, gladly ordered under authority for the Lord's sake"} lessonNo={"Lesson 10 · 1 Peter 2:13–17"} />
 
   <Scripture ref="1 Peter 2:13–17 (ESV)">
 <sup class="vnum">13</sup>Be subject for the Lord's sake to every human institution, whether it be to the emperor as supreme,

@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../components/Scripture.astro';
 import Quiz from '../../components/Quiz.astro';
 import KeyIdea from '../../components/KeyIdea.astro';
+import Masthead from '../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">彼得前书 · 灵修系列</div>
-    <h1>彼此切实相爱</h1>
-    <p class="passage">纯洁的弟兄之爱，由不能死的种子所生</p>
-    <div class="lesson-no">第 7 课 · 彼得前书 1:22–25</div>
-  </div>
+<Masthead series={"彼得前书 · 灵修系列"} title={"彼此切实相爱"} passage={"纯洁的弟兄之爱，由不能死的种子所生"} lessonNo={"第 7 课 · 彼得前书 1:22–25"} />
 
   <Scripture ref="彼得前书 1:22–25 (和合本)">
 <sup class="vnum">22</sup>你们既因顺从真理，洁净了自己的心，以致爱弟兄没有虚假，就当从清洁的心里彼此切实相爱。

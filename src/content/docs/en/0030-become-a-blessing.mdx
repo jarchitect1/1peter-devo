@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series · Synthesis</div>
-    <h1>Become a Blessing to the World</h1>
-    <p class="passage">The conduct thread: a royal priesthood whose seen life silences slander and wins neighbors</p>
-    <div class="lesson-no">Lesson 30 · 1 Peter 2:9–12</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series · Synthesis"} title={"Become a Blessing to the World"} passage={"The conduct thread: a royal priesthood whose seen life silences slander and wins neighbors"} lessonNo={"Lesson 30 · 1 Peter 2:9–12"} />
 
   <Scripture ref="1 Peter 2:9–12 (ESV)">
 <sup class="vnum">9</sup>But you are a chosen race, a royal priesthood, a holy nation, a people for his own possession, that you may proclaim the excellencies of him who called you out of darkness into his marvelous light.

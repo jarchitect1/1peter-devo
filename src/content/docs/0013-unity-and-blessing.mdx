@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../components/Scripture.astro';
 import Quiz from '../../components/Quiz.astro';
 import KeyIdea from '../../components/KeyIdea.astro';
+import Masthead from '../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">彼得前书 · 灵修系列</div>
-    <h1>团契中的合一与祝福</h1>
-    <p class="passage">祭司群体是祝福之子民：同心、慈心、以祝福回报</p>
-    <div class="lesson-no">第 13 课 · 彼得前书 3:8–12</div>
-  </div>
+<Masthead series={"彼得前书 · 灵修系列"} title={"团契中的合一与祝福"} passage={"祭司群体是祝福之子民：同心、慈心、以祝福回报"} lessonNo={"第 13 课 · 彼得前书 3:8–12"} />
 
   <Scripture ref="彼得前书 3:8–12 (和合本)">
 <sup class="vnum">8</sup>总而言之，你们都要同心，彼此体恤，相爱如弟兄，存慈怜谦卑的心。

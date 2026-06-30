@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../components/Scripture.astro';
 import Quiz from '../../components/Quiz.astro';
 import KeyIdea from '../../components/KeyIdea.astro';
+import Masthead from '../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">彼得前书 · 灵修系列</div>
-    <h1>受苦不是终结之语</h1>
-    <p class="passage">等暂受苦难之后，赐诸般恩典的神要成全、坚固、赐力量、建立</p>
-    <div class="lesson-no">第 27 课 · 彼得前书 5:10–11</div>
-  </div>
+<Masthead series={"彼得前书 · 灵修系列"} title={"受苦不是终结之语"} passage={"等暂受苦难之后，赐诸般恩典的神要成全、坚固、赐力量、建立"} lessonNo={"第 27 课 · 彼得前书 5:10–11"} />
 
   <Scripture ref="彼得前书 5:10–11 (和合本)">
 <sup class="vnum">10</sup>那赐诸般恩典的神曾在基督里召你们，得享他永远的荣耀，等你们暂受苦难之后，必要亲自成全你们，坚固你们，赐力量给你们。

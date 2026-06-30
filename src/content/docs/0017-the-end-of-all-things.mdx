@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../components/Scripture.astro';
 import Quiz from '../../components/Quiz.astro';
 import KeyIdea from '../../components/KeyIdea.astro';
+import Masthead from '../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">彼得前书 · 灵修系列</div>
-    <h1>万物的结局近了</h1>
-    <p class="passage">自守的祷告，遮盖罪恶的切实之爱，不发怨言的款待</p>
-    <div class="lesson-no">第 17 课 · 彼得前书 4:7–9</div>
-  </div>
+<Masthead series={"彼得前书 · 灵修系列"} title={"万物的结局近了"} passage={"自守的祷告，遮盖罪恶的切实之爱，不发怨言的款待"} lessonNo={"第 17 课 · 彼得前书 4:7–9"} />
 
   <Scripture ref="彼得前书 4:7–9 (和合本)">
 <sup class="vnum">7</sup>万物的结局近了。所以，你们要谨慎自守，警醒祷告。

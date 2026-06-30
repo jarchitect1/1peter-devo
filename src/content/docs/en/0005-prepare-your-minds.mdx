@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>Prepare Your Minds, Set Your Hope Fully</h1>
-    <p class="passage">The first commands of the letter, and the mind leads the way</p>
-    <div class="lesson-no">Lesson 5 · 1 Peter 1:13–16</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"Prepare Your Minds, Set Your Hope Fully"} passage={"The first commands of the letter, and the mind leads the way"} lessonNo={"Lesson 5 · 1 Peter 1:13–16"} />
 
   <Scripture ref="1 Peter 1:13–16 (ESV)">
 <sup class="vnum">13</sup>Therefore, preparing your minds for action, and being sober-minded, set your hope fully on the grace that will be brought to you at the revelation of Jesus Christ.

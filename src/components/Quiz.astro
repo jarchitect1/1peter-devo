@@ -14,10 +14,10 @@ const { correct, prompt, options = [], feedback = '' } = Astro.props;
   <div class="qprompt" set:html={prompt}></div>
   <ul class="options">
     {options.map((opt) => (
-      <li data-key={opt.key} set:html={opt.text}></li>
+      <li><button type="button" data-key={opt.key} set:html={opt.text}></button></li>
     ))}
   </ul>
-  <div class="feedback" set:html={feedback}></div>
+  <div class="feedback" role="status" aria-live="polite" set:html={feedback}></div>
 </div>
 
 <script>
@@ -27,7 +27,7 @@ const { correct, prompt, options = [], feedback = '' } = Astro.props;
       quiz.dataset.bound = "1";
       const correctKey = quiz.getAttribute("data-correct");
       const feedback = quiz.querySelector<HTMLElement>(".feedback");
-      const options = Array.from(quiz.querySelectorAll<HTMLElement>(".options li"));
+      const options = Array.from(quiz.querySelectorAll<HTMLButtonElement>(".options button"));
       let answered = false;
       options.forEach((opt) => {
         opt.addEventListener("click", () => {

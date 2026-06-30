@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>A Living Hope</h1>
-    <p class="passage">Born again, by mercy, through an empty tomb</p>
-    <div class="lesson-no">Lesson 3 · 1 Peter 1:3–5</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"A Living Hope"} passage={"Born again, by mercy, through an empty tomb"} lessonNo={"Lesson 3 · 1 Peter 1:3–5"} />
 
   <Scripture ref="1 Peter 1:3–5 (ESV)">
 <sup class="vnum">3</sup>Blessed be the God and Father of our Lord Jesus Christ! According to his great mercy, he has caused us to be born again to a living hope through the resurrection of Jesus Christ from the dead,

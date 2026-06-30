@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>Because I Am Holy</h1>
-    <p class="passage">The fear of a Father, the price of a ransom, the Lamb foreknown</p>
-    <div class="lesson-no">Lesson 6 · 1 Peter 1:17–21</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"Because I Am Holy"} passage={"The fear of a Father, the price of a ransom, the Lamb foreknown"} lessonNo={"Lesson 6 · 1 Peter 1:17–21"} />
 
   <Scripture ref="1 Peter 1:17–21 (ESV)">
 <sup class="vnum">17</sup>And if you call on him as Father who judges impartially according to each one's deeds, conduct yourselves with fear throughout the time of your exile,

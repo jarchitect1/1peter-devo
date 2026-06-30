@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>Entrust Yourself to the Faithful Creator</h1>
-    <p class="passage">Judgment begins at God's house; the safe deposit of a suffering soul</p>
-    <div class="lesson-no">Lesson 21 · 1 Peter 4:17–19</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"Entrust Yourself to the Faithful Creator"} passage={"Judgment begins at God's house; the safe deposit of a suffering soul"} lessonNo={"Lesson 21 · 1 Peter 4:17–19"} />
 
   <Scripture ref="1 Peter 4:17–19 (ESV)">
 <sup class="vnum">17</sup>For it is time for judgment to begin at the household of God; and if it begins with us, what will be the outcome for those who do not obey the gospel of God?

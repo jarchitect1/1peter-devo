@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>Christ's Victorious Proclamation</h1>
-    <p class="passage">The righteous for the unrighteous, brought to God, enthroned above all</p>
-    <div class="lesson-no">Lesson 15 · 1 Peter 3:18–22</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"Christ's Victorious Proclamation"} passage={"The righteous for the unrighteous, brought to God, enthroned above all"} lessonNo={"Lesson 15 · 1 Peter 3:18–22"} />
 
   <Scripture ref="1 Peter 3:18–22 (ESV)">
 <sup class="vnum">18</sup>For Christ also suffered once for sins, the righteous for the unrighteous, that he might bring us to God, being put to death in the flesh but made alive in the spirit,

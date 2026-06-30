@@ -1,18 +1,61 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
 import AstroPWA from '@vite-pwa/astro';
+
+const SITE = 'https://1peter.pages.dev';
+const OG_IMAGE = `${SITE}/og.png`;
+
+// JSON-LD describing the series as a CreativeWorkSeries.
+const seriesJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'CreativeWorkSeries',
+	name: '1 Peter — A Devotional Series',
+	alternateName: '彼得前书 · 灵修系列',
+	inLanguage: ['zh-CN', 'en'],
+	description:
+		'A verse-by-verse devotional series on the book of 1 Peter, tracing the priesthood of all believers (1 Peter 2:9).',
+	about: 'The First Epistle of Peter (Bible, New Testament)',
+	url: SITE,
+	image: OG_IMAGE,
+	isPartOf: { '@type': 'Book', name: '1 Peter (New Testament)' },
+};
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://1peter.pages.dev',
+	site: SITE,
 	integrations: [
 		starlight({
 			head: [
+				{ tag: 'meta', attrs: { name: 'theme-color', content: '#6b3f1d' } },
+				// OpenGraph
+				{ tag: 'meta', attrs: { property: 'og:type', content: 'website' } },
+				{ tag: 'meta', attrs: { property: 'og:site_name', content: '1 Peter — A Devotional Series' } },
+				{ tag: 'meta', attrs: { property: 'og:url', content: SITE } },
+				{ tag: 'meta', attrs: { property: 'og:title', content: '1 Peter — A Devotional Series · 彼得前书 · 灵修系列' } },
 				{
 					tag: 'meta',
-					attrs: { name: 'theme-color', content: '#6b3f1d' },
+					attrs: {
+						property: 'og:description',
+						content: 'A verse-by-verse devotional on 1 Peter: the priesthood of all believers — a living hope, a holy life, a humble flock. 逐节导读彼得前书。',
+					},
 				},
+				{ tag: 'meta', attrs: { property: 'og:image', content: OG_IMAGE } },
+				{ tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+				{ tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+				{ tag: 'meta', attrs: { property: 'og:locale', content: 'zh_CN' } },
+				{ tag: 'meta', attrs: { property: 'og:locale:alternate', content: 'en_US' } },
+				// Twitter
+				{ tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
+				{ tag: 'meta', attrs: { name: 'twitter:title', content: '1 Peter — A Devotional Series' } },
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:description', content: 'A verse-by-verse devotional on 1 Peter: the priesthood of all believers.' },
+				},
+				{ tag: 'meta', attrs: { name: 'twitter:image', content: OG_IMAGE } },
+				// JSON-LD structured data
+				{ tag: 'script', attrs: { type: 'application/ld+json' }, content: JSON.stringify(seriesJsonLd) },
 				],
 				title: {
 					'zh-CN': '彼得前书 - 灵修系列',
@@ -196,5 +239,6 @@ export default defineConfig({
 				globPatterns: ['**/*.{css,js,svg,png,ico,txt,woff2}'],
 			},
 		}),
+		sitemap(),
 	],
 });

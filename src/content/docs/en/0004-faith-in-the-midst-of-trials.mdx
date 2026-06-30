@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>Faith in the Midst of Trials</h1>
-    <p class="passage">The fire that grieves us is the fire that proves us</p>
-    <div class="lesson-no">Lesson 4 · 1 Peter 1:6–12</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"Faith in the Midst of Trials"} passage={"The fire that grieves us is the fire that proves us"} lessonNo={"Lesson 4 · 1 Peter 1:6–12"} />
 
   <Scripture ref="1 Peter 1:6–12 (ESV)">
 <sup class="vnum">6</sup>In this you rejoice, though now for a little while, if necessary, you have been grieved by various trials,

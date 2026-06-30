@@ -14,13 +14,9 @@ import { Aside } from '@astrojs/starlight/components';
 import Scripture from '../../../components/Scripture.astro';
 import Quiz from '../../../components/Quiz.astro';
 import KeyIdea from '../../../components/KeyIdea.astro';
+import Masthead from '../../../components/Masthead.astro';
 
-<div class="masthead">
-    <div class="series">1 Peter · A Devotional Series</div>
-    <h1>Serve One Another with the Gifts</h1>
-    <p class="passage">Stewards of varied grace, speaking and serving by God's supply, for His glory</p>
-    <div class="lesson-no">Lesson 18 · 1 Peter 4:10–11</div>
-  </div>
+<Masthead series={"1 Peter · A Devotional Series"} title={"Serve One Another with the Gifts"} passage={"Stewards of varied grace, speaking and serving by God's supply, for His glory"} lessonNo={"Lesson 18 · 1 Peter 4:10–11"} />
 
   <Scripture ref="1 Peter 4:10–11 (ESV)">
 <sup class="vnum">10</sup>As each has received a gift, use it to serve one another, as good stewards of God's varied grace:
