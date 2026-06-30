@@ -5,7 +5,7 @@ import AstroPWA from '@vite-pwa/astro';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://1peter.devo',
+	site: 'https://https://1peter.pages.dev',
 	integrations: [
 		starlight({
 			head: [
