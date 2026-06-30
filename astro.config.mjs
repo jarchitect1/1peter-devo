@@ -20,12 +20,7 @@ export default defineConfig({
 						href: '/manifest.webmanifest',
 					},
 				},
-				{
-					tag: 'script',
-					content:
-						"if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js',{scope:'/'})})}",
-				},
-			],
+				],
 				title: {
 					'zh-CN': '彼得前书 - 灵修系列',
 					en: '1 Peter - A Devotional Series',
@@ -205,7 +200,7 @@ export default defineConfig({
 				],
 			},
 			workbox: {
-				globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,woff2}'],
+				globPatterns: ['**/*.{css,js,svg,png,ico,txt,woff2}'],
 			},
 		}),
 	],
