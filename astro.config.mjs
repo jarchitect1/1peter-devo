@@ -1,11 +1,19 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import AstroPWA from '@vite-pwa/astro';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://1peter.devo',
 	integrations: [
 		starlight({
+			head: [
+				{
+					tag: 'meta',
+					attrs: { name: 'theme-color', content: '#6b3f1d' },
+				},
+			],
 				title: {
 					'zh-CN': '彼得前书 - 灵修系列',
 					en: '1 Peter - A Devotional Series',
@@ -164,6 +172,30 @@ export default defineConfig({
 					],
 				},
 			],
+		}),
+		AstroPWA({
+			mode: 'production',
+			base: '/',
+			includeAssets: ['favicon.svg'],
+			manifest: {
+				name: '彼得前书 - 灵修系列',
+				short_name: '彼得前书',
+				description: '1 Peter - A Devotional Series',
+				theme_color: '#6b3f1d',
+				background_color: '#f5f0e6',
+				display: 'standalone',
+				orientation: 'portrait',
+				lang: 'zh-CN',
+				start_url: '/',
+				icons: [
+					{ src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
+					{ src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png' },
+				],
+			},
+			workbox: {
+				navigateFallback: '/',
+				globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,woff2}'],
+			},
 		}),
 	],
 });
