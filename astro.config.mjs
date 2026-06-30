@@ -13,13 +13,6 @@ export default defineConfig({
 					tag: 'meta',
 					attrs: { name: 'theme-color', content: '#6b3f1d' },
 				},
-				{
-					tag: 'link',
-					attrs: {
-						rel: 'manifest',
-						href: '/manifest.webmanifest',
-					},
-				},
 				],
 				title: {
 					'zh-CN': '彼得前书 - 灵修系列',
