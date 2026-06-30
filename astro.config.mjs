@@ -67,6 +67,12 @@ export default defineConfig({
 				en: { label: 'English', lang: 'en' },
 			},
 			customCss: ['./src/styles/global.css'],
+			// Override Starlight's built-in Hero with a custom editorial-serif
+			// landing hero (see src/components/Hero.astro). Used wherever a page
+			// sets `hero:` in its frontmatter (the splash landing pages).
+			components: {
+				Hero: './src/components/Hero.astro',
+			},
 			// Single sidebar shared by both locales.
 			// Chinese labels are the defaults; English translations are supplied
 			// per entry via `translations: { en: '...' }` (the same pattern used

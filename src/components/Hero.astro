@@ -1,0 +1,186 @@
+---
+// Custom Starlight Hero override — editorial serif landing hero.
+// Reads the page `hero:` frontmatter (tagline + actions[]) the same way the
+// built-in Hero does, via Astro.locals.starlightRoute, so it stays bilingual
+// and data-driven. Registered in astro.config.mjs under `components: { Hero }`.
+import './LandingFonts.astro';
+import { Icon } from '@astrojs/starlight/components';
+
+// Mirrors @astrojs/starlight/constants PAGE_TITLE_ID, used by the header's
+// "jump to content" anchor and screen-reader landmark. Kept as a local
+// constant to avoid a relative import into node_modules.
+const PAGE_TITLE_ID = '_top';
+
+const { data } = Astro.locals.starlightRoute.entry;
+const { title = data.title, tagline, actions = [] } = data.hero || {};
+
+// Determine locale server-side from the route's locale id so the eyebrow
+// label renders in the right language at build time (no client-side flash).
+const locale = Astro.locals.starlightRoute?.locale ?? 'root';
+const isEnglish = locale === 'en';
+const eyebrowText = isEnglish
+	? '1 Peter · A Devotional Series'
+	: '彼得前书 · 灵修系列';
+---
+
+<section class="hero">
+	<div class="hero-inner">
+		<p class="hero-eyebrow">{eyebrowText}</p>
+		<h1 id={PAGE_TITLE_ID}>{title}</h1>
+		<hr class="hero-rule" />
+		{tagline && <p class="hero-tagline">{tagline}</p>}
+		{actions.length > 0 && (
+			<div class="hero-actions">
+				{actions.map((action) => {
+					const variant = action.variant || 'primary';
+					const icon = action.icon;
+					return (
+						<a
+							class:list={['hero-cta', `hero-cta-${variant}`]}
+							href={action.link}
+							{...action.attrs}
+						>
+							{icon && icon.type === 'raw' && (
+								<Fragment set:html={icon.html} />
+							)}
+							{icon && icon.type === 'icon' && <Icon name={icon.name} />}
+							<span>{action.text}</span>
+						</a>
+					);
+				})}
+			</div>
+		)}
+	</div>
+</section>
+
+<style is:global>
+	/* ---- Landing hero -------------------------------------------------- */
+	.hero {
+		position: relative;
+		text-align: center;
+		padding: clamp(3rem, 9vw, 6.5rem) 1.5rem clamp(2.5rem, 6vw, 4rem);
+		overflow: hidden;
+	}
+	/* Soft warm radial backdrop — light mode (default) */
+	.hero::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(
+				60% 50% at 50% 0%,
+				var(--landing-hero-glow) 0%,
+				transparent 70%
+			);
+		pointer-events: none;
+	}
+
+	.hero-inner {
+		max-width: 44rem;
+		margin: 0 auto;
+	}
+
+	.hero-eyebrow {
+		font-family: var(--font-display), "Helvetica Neue", Arial, sans-serif;
+		font-size: 0.72rem;
+		letter-spacing: 0.3em;
+		text-transform: uppercase;
+		color: var(--brand);
+		font-weight: 600;
+		margin: 0 0 1.4rem;
+	}
+
+	.hero h1 {
+		font-family: var(--font-serif), var(--font-display), serif;
+		font-weight: 600;
+		font-size: clamp(2.4rem, 6vw, 3.75rem);
+		line-height: 1.12;
+		letter-spacing: -0.01em;
+		color: var(--sl-color-text-accent, var(--brand));
+		margin: 0 auto;
+		max-width: 18ch;
+	}
+
+	.hero-rule {
+		width: 3.5rem;
+		height: 1px;
+		border: 0;
+		border-top: 1px solid var(--border-warm);
+		margin: 1.5rem auto;
+		opacity: 0.8;
+	}
+
+	.hero-tagline {
+		font-family: var(--font-serif), serif;
+		font-style: italic;
+		font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+		line-height: 1.6;
+		color: var(--ink);
+		margin: 0 auto 2rem;
+		max-width: 32rem;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.85rem;
+		justify-content: center;
+		align-items: center;
+	}
+
+	/* ---- CTAs ---------------------------------------------------------- */
+	.hero-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		font-family: var(--font-display), "Helvetica Neue", Arial, sans-serif;
+		font-size: 0.92rem;
+		letter-spacing: 0.04em;
+		text-decoration: none;
+		padding: 0.7rem 1.5rem;
+		border-radius: 999rem;
+		border: 1px solid transparent;
+		transition: transform 0.18s ease, background 0.18s ease,
+			border-color 0.18s ease, color 0.18s ease;
+	}
+	.hero-cta:hover { transform: translateY(-1px); }
+	.hero-cta:focus-visible {
+		outline: 2px solid var(--brand);
+		outline-offset: 3px;
+	}
+
+	.hero-cta-primary {
+		background: var(--brand);
+		border-color: var(--brand);
+		color: #fff7ec;
+	}
+	.hero-cta-primary:hover {
+		background: var(--brand-accent);
+		border-color: var(--brand-accent);
+		color: #fff7ec;
+	}
+
+	.hero-cta-secondary,
+	.hero-cta-minimal {
+		background: transparent;
+		border-color: var(--border-warm);
+		color: var(--ink);
+	}
+	.hero-cta-secondary:hover,
+	.hero-cta-minimal:hover {
+		background: var(--hover-bg);
+		color: var(--brand);
+	}
+
+	/* ---- Dark mode backdrop ------------------------------------------- */
+	:global([data-theme='dark']) .hero::before,
+	:global([data-theme='auto']) .hero::before {
+		background:
+			radial-gradient(
+				55% 45% at 50% 0%,
+				var(--landing-hero-glow) 0%,
+				transparent 70%
+			);
+	}
+</style>

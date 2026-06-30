@@ -26,6 +26,13 @@
   --ok-bg: #e6efd9;            /* correct answer background */
   --err-border: #b07a6a;       /* wrong answer border */
   --err-bg: #f0ddd9;           /* wrong answer background */
+
+  /* Typography tokens for the landing page serif treatment */
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  --font-display: "Cormorant", Georgia, "Times New Roman", serif;
+
+  /* Hero backdrop glow — warm cream wash in light mode */
+  --landing-hero-glow: rgba(176, 106, 44, 0.12);
 }
 
 :root[data-theme='dark'],
@@ -46,6 +53,9 @@
   --ok-bg: rgba(100, 180, 80, 0.15);
   --err-border: #b07a6a;
   --err-bg: rgba(200, 100, 80, 0.15);
+
+  /* Subtler, warmer glow for the dark hero backdrop */
+  --landing-hero-glow: rgba(212, 165, 116, 0.10);
 }
 
 /* ---- Lesson masthead ------------------------------------------------- */
@@ -251,4 +261,168 @@
 	color: var(--brand); font-family: "Helvetica Neue", Arial, sans-serif;
 	font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
 	font-weight: 700; display: block; margin-bottom: 0.3rem;
+}
+
+/* =========================================================================
+   Landing page — editorial serif treatment
+   Scoped to the splash template's content panel via the .landing namespace.
+   The hero itself is styled in src/components/Hero.astro; this section covers
+   the body that follows it: lead intro, lesson ledger, cards, references.
+   ========================================================================= */
+
+/* ---- Section rhythm -------------------------------------------------- */
+.landing .sl-markdown-content,
+.landing-page .sl-markdown-content {
+	max-width: 46rem;
+}
+
+/* ---- Section labels (small tracked-out brand headings) -------------- */
+.landing-page h2,
+.landing h2 {
+	font-family: var(--font-display), Georgia, serif;
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: var(--brand);
+	margin: 3rem 0 1.25rem;
+	position: relative;
+	padding-top: 2rem;
+}
+.landing-page h2::before,
+.landing h2::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 3rem;
+	height: 1px;
+	background: var(--border-warm);
+	opacity: 0.8;
+}
+
+/* ---- Lead intro paragraph with drop-cap ----------------------------- */
+.landing-lead {
+	font-family: var(--font-serif), serif;
+	font-size: 1.18rem;
+	line-height: 1.75;
+	color: var(--ink);
+	margin-bottom: 1.4rem;
+}
+.landing-lead + p {
+	font-size: 1.04rem;
+	line-height: 1.78;
+	color: var(--ink);
+	margin-bottom: 1.4rem;
+}
+.landing-lead.opener::first-letter {
+	font-family: var(--font-display), Georgia, serif;
+	font-size: 3.6rem;
+	font-weight: 600;
+	float: left;
+	line-height: 0.82;
+	padding: 0.22rem 0.55rem 0 0;
+	color: var(--brand);
+}
+
+/* ---- Lesson ledger --------------------------------------------------- */
+/* A scannable, hairline-divided table: brand-colored lesson numbers in
+   serif numerals, muted passage refs, subtle row hover. */
+.lesson-ledger {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.98rem;
+	margin: 0.5rem 0 1.5rem;
+}
+.lesson-ledger thead th {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 0.68rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--ink-muted);
+	font-weight: 700;
+	text-align: left;
+	padding: 0.6rem 0.75rem;
+	border-bottom: 1px solid var(--border);
+}
+.lesson-ledger tbody td {
+	padding: 0.6rem 0.75rem;
+	border-bottom: 1px solid var(--border-soft);
+	vertical-align: top;
+	color: var(--ink);
+	line-height: 1.5;
+}
+.lesson-ledger tbody tr:last-child td { border-bottom: 0; }
+.lesson-ledger tbody tr {
+	transition: background 0.14s ease;
+}
+.lesson-ledger tbody tr:hover {
+	background: var(--surface);
+}
+/* Lesson number column — serif numeral, brand-tinted */
+.lesson-ledger td:first-child,
+.lesson-ledger th:first-child {
+	font-family: var(--font-display), Georgia, serif;
+	font-weight: 600;
+	color: var(--brand);
+	width: 3.5rem;
+	text-align: left;
+}
+/* Title column links */
+.lesson-ledger td:nth-child(2) a {
+	color: var(--ink);
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: color 0.14s ease, border-color 0.14s ease;
+}
+.lesson-ledger td:nth-child(2) a:hover {
+	color: var(--brand);
+	border-bottom-color: var(--border-warm);
+}
+/* Passage column — muted italic */
+.lesson-ledger td:nth-child(3) {
+	font-style: italic;
+	color: var(--ink-muted);
+	font-size: 0.92rem;
+}
+/* Compact the header on small screens, keep numbers narrow */
+@media (max-width: 32rem) {
+	.lesson-ledger { font-size: 0.9rem; }
+	.lesson-ledger td, .lesson-ledger th { padding: 0.5rem 0.5rem; }
+}
+
+/* ---- Reference cards (refine Starlight CardGrid on the landing) ----- */
+.landing-cards .sl-card,
+.landing-page .sl-card {
+	border: 1px solid var(--border-soft);
+	border-radius: 6px;
+	background: var(--surface-4);
+	transition: transform 0.18s ease, box-shadow 0.18s ease,
+		border-color 0.18s ease;
+}
+.landing-cards a:hover .sl-card,
+.landing-page a:hover .sl-card {
+	transform: translateY(-2px);
+	border-color: var(--border-warm);
+	box-shadow: 0 6px 22px rgba(107, 63, 29, 0.08);
+}
+.landing-cards .sl-card h3,
+.landing-page .sl-card h3,
+.landing-cards .sl-card a,
+.landing-page .sl-card a {
+	font-family: var(--font-display), Georgia, serif;
+}
+
+/* ---- References list ------------------------------------------------- */
+.landing-page ul,
+.landing ul {
+	font-size: 0.98rem;
+	line-height: 1.7;
+}
+.landing-page ul li,
+.landing ul li {
+	margin-bottom: 0.4rem;
+}
+.landing-page ul strong,
+.landing ul strong {
+	color: var(--brand);
 }
